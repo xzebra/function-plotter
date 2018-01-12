@@ -88,7 +88,7 @@ void Graph::cls(int offset) {
     for(int i = 0; i < size*2 + offset; i++) cout << "\x1b[A";
 }
 
-void Graph::printGraph() {
+void Graph::plot() {
     cout << '\n';
     for(int i = 0;i < size;++i) {
         cout << ' ';

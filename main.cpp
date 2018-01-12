@@ -17,9 +17,10 @@ int main() {
     //Example 1
     cout << "\e[0;32mSTATIC EXAMPLE:\e[0m" << endl;
     graph.fillValues(&function1);
-    graph.printGraph();
+    graph.plot();
     graph.clearMemory();
 
+    //Example 2
     cout << "\n\n" << "\e[0;32mANIMATED EXAMPLE:\e[0m" << endl;
     graph.loop(&function2);
     graph.clearMemory();
