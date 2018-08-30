@@ -1,3 +1,0 @@
-E:/Menu/5.Programming/C++/TerminalPlotter/cmake-build-debug/CMakeFiles/TerminalPlotter.dir
-E:/Menu/5.Programming/C++/TerminalPlotter/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/Menu/5.Programming/C++/TerminalPlotter/cmake-build-debug/CMakeFiles/rebuild_cache.dir
