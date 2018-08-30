@@ -1,6 +1,6 @@
 #include <iostream>
 //#include "plot.h"
-#include "mathParser.h"
+#include "mathParser/mathParser.h"
 
 /*
 double function1(double x, double t) {
