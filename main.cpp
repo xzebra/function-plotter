@@ -1,27 +1,48 @@
 #include <iostream>
 #include <cmath>
-#include "plot.hpp"
-using namespace std;
+//#include "plot.h"
+#include "mathParser/mathParser.h"
 
-double function1(double x) {
+/*double function1(double x) {
     return x*x*x;
 }
 
 double function2(double x, double t) {
     return 0.1*cos(8*3.1416*t - 4*3.1416*x);
-}
+}*/
 
 int main() {
-    Graph graph(15, 1.0/20); //size | step
+
+
+    /*Graph<double> graph(15, 1.0/20); //size | step
 
     //Example 1
-    cout << "\e[0;32mSTATIC EXAMPLE:\e[0m" << endl;
-    graph.fillValues(&function1);
+    std::cout << "\e[0;32mSTATIC EXAMPLE:\e[0m" << std::endl;
+    //graph.fillValues(1, &function1);
+    graph.fillValues(2, &function2);
     graph.plot();
-    graph.clearMemory();
+    graph.clearMemory();*/
 
     //Example 2
-    cout << "\n\n" << "\e[0;32mANIMATED EXAMPLE:\e[0m" << endl;
+    /*
+    std::cout << "\n\n" << "\e[0;32mANIMATED EXAMPLE:\e[0m" << std::endl;
     graph.loop(&function2);
-    graph.clearMemory();
+    graph.clearMemory();*/  
 }
+
+/** TODO:
+    · Parse math expression in string to avoid this shitty 
+    pointers to functions:
+        - Create an operation tree:
+                (+)            
+               / \        
+             /   \       
+          (*)    (/)         
+         /  \   /  \        
+        A   B  C   D   
+
+        - Replace in the tree the unknown values 
+            -> function arguments
+        
+        - Plot!
+ */
