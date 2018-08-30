@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include "stack.h"
 
 struct Operation {
     char op;
@@ -16,9 +15,7 @@ class Parser {
         Parser() = default;
         ~Parser() = default;
         Operation Parse(std::string input);
-    private:
-        Stack<double> operandStack;
-        Stack<char> operatorStack;
+        std::string toPostfix(std::string infix);
 };
 
 #endif

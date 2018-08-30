@@ -1,19 +1,16 @@
 #include <iostream>
-#include <cmath>
 //#include "plot.h"
-#include "mathParser/mathParser.h"
+#include "mathParser.h"
 
-/*double function1(double x) {
-    return x*x*x;
-}
-
-double function2(double x, double t) {
+/*
+double function1(double x, double t) {
     return 0.1*cos(8*3.1416*t - 4*3.1416*x);
-}*/
+}
+*/
 
 int main() {
-
-
+    Parser mathParser = Parser();
+    std::cout << mathParser.toPostfix("3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3") << std::endl;
     /*Graph<double> graph(15, 1.0/20); //size | step
 
     //Example 1
@@ -29,20 +26,3 @@ int main() {
     graph.loop(&function2);
     graph.clearMemory();*/  
 }
-
-/** TODO:
-    · Parse math expression in string to avoid this shitty 
-    pointers to functions:
-        - Create an operation tree:
-                (+)            
-               / \        
-             /   \       
-          (*)    (/)         
-         /  \   /  \        
-        A   B  C   D   
-
-        - Replace in the tree the unknown values 
-            -> function arguments
-        
-        - Plot!
- */

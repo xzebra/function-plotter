@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/Menu/5.Programming/C++/TerminalPlotter/main.cpp
+iostream
+-
+cmath
+-
+mathParser/mathParser.h
+E:/Menu/5.Programming/C++/TerminalPlotter/mathParser/mathParser.h
+
+E:/Menu/5.Programming/C++/TerminalPlotter/mathParser/mathParser.h
+iostream
+-
+string
+-
+

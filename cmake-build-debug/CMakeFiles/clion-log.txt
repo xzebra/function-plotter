@@ -1,0 +1,4 @@
+E:\JetBrains\apps\CLion\ch-0\182.3911.40\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" E:\Menu\5.Programming\C++\TerminalPlotter
+-- Configuring done
+-- Generating done
+-- Build files have been written to: E:/Menu/5.Programming/C++/TerminalPlotter/cmake-build-debug
