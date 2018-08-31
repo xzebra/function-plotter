@@ -15,6 +15,6 @@ int main(int argc, char *argv[]) {
     std::getline(std::cin, input);
     
     Graph graph(size, step);
-    graph.Plot(input);
-    //graph.Loop(input);
+    //graph.Plot(input);
+    graph.Loop(input);
 }

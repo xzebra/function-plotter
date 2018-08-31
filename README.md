@@ -1,41 +1,32 @@
 # function-plotter
-It plots any function you want into the console. The only obstacle is that<br>
-if you use a function with different parameters, it will be required to add
-that function template to the plot header file.
+
+It plots any function you want into the console. Just type it into the console <br>
+and it will do the work for you!
 
 ## Functions
+
 ### Constructor
-Being its parameters the size and step
+
+Being its parameters the size and step:
+
 ```c++
-Graph graph(15, 1.0/20);
+Graph graph(10, 10);
+
+![alt text](https://i.imgur.com/uyu9uD4.png)
 ```
 
-### Graph:fillValues()
+### Graph:Plot(std::string expression)
+
 ```c++
-double function1(double x) {
-    return x*x*x;
-}
-...
-graph.fillValues(&function1);
+Graph.Plot("0.1 * x");
 ```
 
-### Graph:plot()
+![alt text](https://i.imgur.com/r4dxzzh.png)
+
+### Graph:Loop(std::string expression)
+
 ```c++
-graph.fillValues(&function1);
-graph.plot();
+graph.Loop("0.1*cos(8*3.1416*t - 4*3.1416*x)")
 ```
 
-### Graph:clearMemory()
-Clears out the memory allocated for the plot values
-```c++
-graph.clearMemory();
-```
-
-### Graph:loop()
-```c++
-double function2(double x, double t) {
-    return 0.1*cos(8*3.1416*t - 4*3.1416*x);
-}
-...
-graph.loop(&function2);
-```
+![alt text](https://i.imgur.com/pIkX6Ml.gif)
