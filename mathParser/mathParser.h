@@ -9,7 +9,8 @@
 
 struct Operation {
     std::string postfix; // postfix interpretation of the expression
-    std::vector<int> variables; // indexes of variables
+    std::vector<int> v_pos; // indexes of variables
+    std::vector<double> v_values; // values of variables
 };
 
 class Parser {

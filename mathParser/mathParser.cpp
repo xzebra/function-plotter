@@ -23,14 +23,13 @@ int precedence(char c) {
         case '+':
         case '-':
             return 2;
-            break;
         case '*':
         case '/':
             return 3;
-            break;
         case '^':
             return 4;
-            break;
+        default: // functions
+            return 5;           
     }
 }
 
@@ -41,7 +40,7 @@ bool assocRight(char c) {
 Operation* Parser::toPostfix(std::string infix) {
     Stack<char> operatorStack = Stack<char>();
     Operation *output = new Operation();
-    output->variables = std::vector<int>(0);
+    output->v_pos = std::vector<int>(0);
 
     // While there are tokens to be read
     for(int i = 0; i < infix.length(); i++) {

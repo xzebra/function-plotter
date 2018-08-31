@@ -7,21 +7,17 @@
 #include <cmath>
 #include <cstdarg>
 
+#include "mathParser/mathParser.h"
 
-template <class a_type> class Graph {
+class Graph {
     public:
-        void printGraph();
         void cls(int offset);
         void clearMemory();
 
-        void fillValues(int n_args, a_type (*function)(a_type ...));
-        //void fillValues(double (*function)(double x));
-        //void fillValues(double (*function)(double x, double t), double t);
+        void Plot(std::string infix);
+        void Loop(std::string infix);
 
-        void loop(double (*function)(double x));
-        void loop(double (*function)(double x, double t));
         Graph(int si, double st);
-        void plot();
     private:
         int size;
         double step;
@@ -38,9 +34,15 @@ template <class a_type> class Graph {
         const std::string line = green + "# " + NC;
         const std::string graph = "  ";
 
-        a_type round(a_type number);
-
+        double round(double number);
         void sleep(int milliseconds);
+        void plot();
+
+        void fillValues(Operation *op);
+        void fillValues(Operation *op, double t);
+        std::string replaceVars(const Operation *op);
+
+        Parser mathParser;
 };
 
 #endif
