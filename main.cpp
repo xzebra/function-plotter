@@ -10,7 +10,11 @@ double function1(double x, double t) {
 
 int main() {
     Parser mathParser = Parser();
-    std::cout << mathParser.toPostfix("3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3") << std::endl;
+    std::string input;
+    std::getline(std::cin, input);
+    Operation *op = mathParser.toPostfix(input);
+    //std::cout << op->postfix << std::endl;
+    std::cout << mathParser.Solve(op->postfix) << std::endl;
     /*Graph<double> graph(15, 1.0/20); //size | step
 
     //Example 1

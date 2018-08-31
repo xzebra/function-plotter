@@ -38,9 +38,10 @@ bool assocRight(char c) {
     return c == '^';
 }
 
-std::string Parser::toPostfix(std::string infix) {
+Operation* Parser::toPostfix(std::string infix) {
     Stack<char> operatorStack = Stack<char>();
-    std::string postfix = "";
+    Operation *output = new Operation();
+    output->variables = std::vector<int>(0);
 
     // While there are tokens to be read
     for(int i = 0; i < infix.length(); i++) {
@@ -53,9 +54,9 @@ std::string Parser::toPostfix(std::string infix) {
                     i = j-1;
                     break;
                 }               
-                postfix += c; // push num to the output queue
+                output->postfix += infix[j]; // push num to the output queue
             }
-            postfix += ' ';
+            output->postfix += ' ';
         } else if(isOperator(c)) {               
             while(!operatorStack.empty()) {
                 char head = operatorStack.getHead();
@@ -63,8 +64,8 @@ std::string Parser::toPostfix(std::string infix) {
                 if(precedence(head) < precedence(c)) break;
                 if(precedence(head) == precedence(c) && assocRight(head)) break;
                 // push operator to the output queue
-                postfix += operatorStack.pop();
-                postfix += ' ';
+                output->postfix += operatorStack.pop();
+                output->postfix += ' ';
             }            
             operatorStack.push(c);
 
@@ -79,8 +80,8 @@ std::string Parser::toPostfix(std::string infix) {
                     found = true;
                     break;
                 }
-                postfix += operatorStack.pop();
-                postfix += ' ';
+                output->postfix += operatorStack.pop();
+                output->postfix += ' ';
             }
             if(!found) std::cout << "error: mismatched parenthesis" << std::endl;     
         }
@@ -89,68 +90,47 @@ std::string Parser::toPostfix(std::string infix) {
 
     // no more tokens to read:
     while(!operatorStack.empty()) {
-        postfix += operatorStack.pop();
-        postfix += ' ';
+        output->postfix += operatorStack.pop();
+        output->postfix += ' ';
     }
 
-    return postfix;
+    return output;
 }
 
-Operation Parser::Parse(std::string infix) {
-    Stack operatorStack = Stack<char>();
-    Stack outputStack = Stack<Operation>();
-    std::string postfix = "";
-
-    // While there are tokens to be read
-    for(int i = 0; i < infix.length(); i++) {
-        char c = infix[i]; // Read a token
-        if(c == ' ') continue;
-        if(isNum(c)) { // token is number
-            for(int j = i; j < infix.length(); j++) {
-                // parse its digits // TODO: double nums
-                if(!isNum(infix[j])) {
-                    i = j-1;
+double Parser::Solve(const std::string postfix) {
+    Stack<double> operandStack = Stack<double>();
+    std::stringstream ss(postfix);
+    std::string token;
+    
+    while(ss >> token) { // iterate through each token in string    
+        if(isNum(token[0])) { 
+            // if number push to stack
+            operandStack.push(std::stoi(token));
+        } else { // is operator -> solve that operation
+            // pop the last two numbers
+            double y = operandStack.pop(), x = operandStack.pop();
+            // push result to stack      
+            switch (token[0]) {
+                case '+':                   
+                    operandStack.push(x + y);
                     break;
-                }               
-                postfix += c; // push num to the output queue
-            }
-            postfix += ' ';
-        } else if(isOperator(c)) {               
-            while(!operatorStack.empty()) {
-                char head = operatorStack.getHead();
-                if(head == '(') break;
-                if(precedence(head) < precedence(c)) break;
-                if(precedence(head) == precedence(c) && assocRight(head)) break;
-                // push operator to the output queue
-                postfix += operatorStack.pop();
-                postfix += ' ';
+                case '-':
+                    operandStack.push(x - y);
+                    break;
+                case '*':
+                    operandStack.push(x * y);
+                    break;
+                case '/':
+                    operandStack.push(x / y);
+                    break;
+                case '^':
+                    operandStack.push(std::pow(x, y));
+                    break;
             }            
-            operatorStack.push(c);
-
-        } else if(c == ')') {
-            bool found = false;
-            while(!operatorStack.empty()) {
-                // while the operator at the top of the stack is not a left
-                // bracket -> pop the operator from stack onto the output
-                if(operatorStack.getHead() == '(') {
-                    // pop the left bracket from the stack
-                    operatorStack.pop();
-                    found = true;
-                    break;
-                }
-                postfix += operatorStack.pop();
-                postfix += ' ';
-            }
-            if(!found) std::cout << "error: mismatched parenthesis" << std::endl;     
         }
-        // TODO: check for functions and variables
     }
 
-    // no more tokens to read:
-    while(!operatorStack.empty()) {
-        postfix += operatorStack.pop();
-        postfix += ' ';
-    }
-
-    return postfix;
+    // pop result from stack
+    return operandStack.pop();
 }
+

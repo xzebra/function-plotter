@@ -3,19 +3,21 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <sstream>
+#include <cmath>
 
 struct Operation {
-    char op;
-    double result;
-    Operation *x, *y;
+    std::string postfix; // postfix interpretation of the expression
+    std::vector<int> variables; // indexes of variables
 };
 
 class Parser {
     public:
         Parser() = default;
         ~Parser() = default;
-        Operation Parse(std::string input);
-        std::string toPostfix(std::string infix);
+        double Solve(const std::string op);
+        Operation* toPostfix(std::string infix);
 };
 
 #endif
