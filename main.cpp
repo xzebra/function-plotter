@@ -1,18 +1,20 @@
 #include <iostream>
 #include "plot.h"
 
-/*
-double function1(double x, double t) {
-    return 0.1*cos(8*3.1416*t - 4*3.1416*x);
-}
-*/
-
-int main() {
+int main(int argc, char *argv[]) {
     Parser mathParser = Parser();
+    double size = 10;
+    double step = 1;
+
+    if(argc == 3) {
+        size = std::stod(argv[1]);
+        step = std::stod(argv[2]);
+    }
+    
     std::string input;
     std::getline(std::cin, input);
     
-    //Graph graph(15, 1.0/20); //size | step
-    Graph graph(10, 10);
+    Graph graph(size, step);
     graph.Plot(input);
+    //graph.Loop(input);
 }
