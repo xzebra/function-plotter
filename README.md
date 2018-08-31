@@ -11,9 +11,9 @@ Being its parameters the size and step:
 
 ```c++
 Graph graph(10, 10);
+```
 
 ![alt text](https://i.imgur.com/uyu9uD4.png)
-```
 
 ### Graph:Plot(std::string expression)
 
