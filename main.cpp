@@ -12,6 +12,7 @@ int main(int argc, char *argv[]) {
     }
     
     std::string input;
+    std::cout << "y = ";
     std::getline(std::cin, input);
     
     Graph graph(size, step);
