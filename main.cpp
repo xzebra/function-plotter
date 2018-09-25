@@ -10,7 +10,6 @@ bool checkError(int argc, int i) {
 }
 
 int main(int argc, char *argv[]) {
-    Parser mathParser = Parser();
     double size = 10;
     double step = 1;
     bool loop = false;
