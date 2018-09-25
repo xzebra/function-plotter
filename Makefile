@@ -1,2 +1,2 @@
 default:
-	g++ *.cpp mathParser/*.cpp -std=c++11
+	g++ *.cpp mathParser/*.cpp -o zplot -std=c++11
